@@ -41,7 +41,7 @@ Copyright (C) 2023 SAP SE or an SAP affiliate company and pie-chart-reporting-fo
 Found a security-related issue or vulnerability and want to notify us?
 
 Please contact us at:
-[macatsap-opensource-security@sap.com](mailto:macatsap-opensource-security@sap.com?subject=subject=[GitHub]%20Pie%Chart%Reporting%20Security%20Issue%20Report)
+[macatsap-opensource-security@sap.com](mailto:macatsap-opensource-security@sap.com?subject=subject=[GitHub]%20Pie%20Chart%20Reporting%20Security%20Issue%20Report)
 
 ## Support
 
