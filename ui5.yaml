@@ -1,0 +1,13 @@
+specVersion: '2.6'
+metadata:
+  name: apple-pies
+type: application
+framework:
+  name: SAPUI5
+  version: "1.110.0"
+  libraries:
+    - name: sap.m
+    - name: sap.suite.ui.commons
+    - name: sap.ui.core
+    - name: sap.ui.layout
+    - name: themelib_sap_bluecrystal

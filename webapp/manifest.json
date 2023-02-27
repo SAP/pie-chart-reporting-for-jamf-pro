@@ -1,0 +1,131 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "com.sap.report",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"ach": "ach",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.32.0"
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"config": {
+			"reportingId": "Report",
+			"titleResource": "Apple Pies",
+			"icon": "sap-icon://favorite",
+			"appName": "Apple Pies",
+			"ascAppId": "492",
+			"ignoreComponent": true,
+			"supportTeam": "laura.roesler@sap.com"
+		},
+		"_version": "1.1.0",
+		"rootView": {
+			"viewName": "com.sap.report.view.Main",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.sap.report.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"viewPath": "com.sap.report.view",
+				"viewType": "XML",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"routerClass": "sap.m.routing.Router",
+				"appName": "Apple Pies",
+				"ignoreComponent": true,
+				"supportTeam": "laura.roesler@sap.com"
+			},
+			"routes": [
+				{
+					"name": "main",
+					"pattern": "",
+					"greedy": false,
+					"target": [
+						"Master"
+					]
+				},
+				{
+					"name": "Detail",
+					"pattern": "group/{group}",
+					"greedy": false,
+					"target": [
+						"Master",
+						"Detail"
+					]
+				}
+			],
+			"targets": {
+				"Detail": {
+					"viewName": "Detail",
+					"controlAggregation": "detailPages"
+				},
+				"Master": {
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Master",
+					"controlAggregation": "masterPages"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.2.0"
+	}
+}

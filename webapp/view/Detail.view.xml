@@ -1,0 +1,78 @@
+<mvc:View 
+		xmlns:core="sap.ui.core"
+		xmlns:mvc="sap.ui.core.mvc" 
+		xmlns="sap.m"
+		xmlns:html="http://www.w3.org/1999/xhtml" 
+		xmlns:viz="sap.viz.ui5.controls" 
+		xmlns:l="sap.ui.layout" 
+		xmlns:suite="sap.suite.ui.commons"
+		xmlns:data="sap.viz.ui5.data" 
+		xmlns:semantic="sap.m.semantic" 
+		xmlns:feeds="sap.viz.ui5.controls.common.feeds"
+		controllerName="com.sap.report.controller.Detail">
+
+
+
+	
+	<Page id="intropage" showHeader="true" enableScrolling="false" showNavButton="false">
+	<!--<Page title="Details" id="intropage" showHeader="true" enableScrolling="false" showNavButton="true" navButtonPress="onNavBack">-->
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://menu2" press="onNavBack"></Button>
+				</contentLeft>
+				<contentMiddle>
+					<Title text="Details"></Title>
+				</contentMiddle>
+				<contentRight>
+					<!--<Button text="Switch to Jamf Pro data" press="onButtonPressed"></Button>-->
+					<Button icon="sap-icon://refresh" press="onRefresh"></Button>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		
+		<suite:ChartContainer id="chartContainer" visible="true" title= "Active Macs: {view>/clients}"
+				showPersonalization="false" showFullScreen="true" fullScreen="true"
+					showLegend="true" autoAdjustHeight="true" showZoom="false" showLegendButton="true">
+					<suite:content>
+						<suite:ChartContainerContent>
+							<suite:content>
+								<viz:Popover id="idPopOver"></viz:Popover>
+								
+								<viz:VizFrame id="idVizFrame" vizType="pie" height="100%" 
+								width="100%" uiConfig="{applicationSet:'fiori'}">
+									<viz:dataset>
+										<data:FlattenedDataset data="{/}">
+											<data:dimensions>
+												<data:DimensionDefinition 
+													name="Group name" value="{name}">
+												</data:DimensionDefinition>
+											</data:dimensions>
+											<data:measures>
+												<data:MeasureDefinition 
+													name="Clients" value="{computer}">
+												</data:MeasureDefinition>
+											</data:measures>
+										</data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<feeds:FeedItem uid="size" type="Measure" values="Clients"/>
+										<feeds:FeedItem uid="color" type="Dimension" values="Group name"/>
+									</viz:feeds>
+								</viz:VizFrame>
+								
+							</suite:content>
+						</suite:ChartContainerContent>
+					</suite:content>
+		</suite:ChartContainer>
+		
+		<footer>
+			<OverflowToolbar></OverflowToolbar>
+		</footer>
+		
+		
+		<!--<footer>
+			<OverflowToolbar></OverflowToolbar>
+		</footer>-->
+	</Page>
+</mvc:View>

@@ -1,0 +1,48 @@
+<mvc:View 
+		xmlns:core="sap.ui.core" 
+		xmlns:mvc="sap.ui.core.mvc" 
+		xmlns="sap.m"
+		controllerName="com.sap.report.controller.Master" 
+		xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<Page title="All Reports">
+		
+		<subHeader>
+			<Bar id="searchBar">
+				<contentMiddle>
+					<SearchField
+						id="searchField"
+						liveChange="onSearch"
+						placeholder="Search your Report"
+						width="100%">
+					</SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		
+		<content>
+			<List
+				id="idList"
+				items="{/}"
+				selectionChange="onSelect"
+				growing="true">
+				<items id="idListItems">
+					
+					<StandardListItem
+		                title="{displayName}"
+		                description="{subTitle}"
+		                type="Navigation"
+		                press="onItemPressed">
+		            </StandardListItem>
+
+				</items>
+			</List>
+        </content>
+        
+        <footer>
+			<OverflowToolbar></OverflowToolbar>
+		</footer>
+		
+    </Page>
+	
+</mvc:View>
