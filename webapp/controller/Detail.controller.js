@@ -14,6 +14,8 @@ sap.ui.define([
     return Controller.extend("com.sap.report.controller.Detail", {
     	
     	dataService: null,
+		aComputerGroupsData: null,
+    	displayPercentage: false,
         
         /**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -94,8 +96,15 @@ sap.ui.define([
 			const aDetailedComputerGroups = await this.getComputerGroupsInformation(aReportComputerGroups, reload);
 			oDetailedComputerGroupsModel.setData(aDetailedComputerGroups);
 			this.getView().setModel(oDetailedComputerGroupsModel);
-		
-			this.createPieChart(oDetailedComputerGroupsModel);
+			const legend = {
+				title: {
+						visible: "true",
+						text: "Type | Clients"
+				}
+			};
+			this.createPieChart(oDetailedComputerGroupsModel, legend);
+			this.handlePercentagesDisplay();
+
 			sap.ui.core.BusyIndicator.hide(); // stop BusyIndicator
 	
 		},
@@ -105,18 +114,21 @@ sap.ui.define([
 		 * @param {object} oDetailedComputerGroupsModel The object containing
 		 * detailed data of the computergroups needed for this pie chart.
 		 */
-		createPieChart: function(oDetailedComputerGroupsModel) {
+		createPieChart: function(oDetailedComputerGroupsModel, legend, dataLabel) {
 			var oVizFrame = this.getView().byId("idVizFrame");
 			const sTitle = this.oGroup.displayName;
 			const sSubtitle = this.oGroup.subTitle;
 
 			oVizFrame.setVizProperties({
-				legend: {
-					title: {
-						visible: "true",
-						text: "Type | Clients"
-					}
+				legend,
+				legendGroup: {
+					layout: {
+						maxWidth: 0.4,
+						width: 0.3
+					},
+					alignment: "topRight"
 				},
+				dataLabel,
 				title: {
 					visible: "true",
 					text: sTitle + " " + sSubtitle
@@ -155,9 +167,9 @@ sap.ui.define([
 				aComputerGroupPromises.push(this.dataService.getOneComputerGroupDetail(computerGroup.id, reload));
 			}
 			
-			const aComputerGroupsData = await Promise.all(aComputerGroupPromises);
+			this.aComputerGroupsData = await Promise.all(aComputerGroupPromises);
 			
-			const aPreparedComputerGroups = this.prepareComputerGroupsForPieChart(aComputerGroupsData);
+			const aPreparedComputerGroups = this.prepareComputerGroupsForPieChart(this.aComputerGroupsData);
 
 			return aPreparedComputerGroups;
 		},
@@ -169,12 +181,17 @@ sap.ui.define([
 		 * also added to the displayed object.
 		 * 
 		 */
-		prepareComputerGroupsForPieChart: function(aComputerGroupsData) {
+		prepareComputerGroupsForPieChart: function(aComputerGroupsData, displayPercentage) {
 			const aPreparedComputerGroups = [];
+
+			let allComputers = 0;
+			for (let cg of aComputerGroupsData) allComputers += cg.computers.length;
+
 			for (const oComputerGroup of aComputerGroupsData) {
 				// for legend: Split on position [2] 
 				var sName = oComputerGroup.name;
 				var sSize = oComputerGroup.computers.length;
+				var sPercentage = oComputerGroup.computers.length / allComputers;
 
 				var aNames = sName.split("|");
 
@@ -184,9 +201,11 @@ sap.ui.define([
 					sName = aNames[2];
 				}
 				var oPreparedComputerGroup = {
-					"name": sName + " | " + sSize + "",
+					"name": sName + " | " + sSize + (displayPercentage ? " | " + sPercentage.toLocaleString(undefined, {style: "percent", maximumFractionDigits: 1}) : ""),
 					"computer": sSize
 				};
+				oPreparedComputerGroup["percentage"] = displayPercentage ? sPercentage : null;
+
 				if (sSize > 0) {
 					aPreparedComputerGroups.push(oPreparedComputerGroup);
 				}
@@ -194,6 +213,32 @@ sap.ui.define([
 			}
 			
 			return aPreparedComputerGroups;
+		},
+
+		handlePercentagesDisplay: async function() {
+			
+			this.displayPercentage = this.getView().byId("percentageToggle").mProperties["pressed"];
+			
+			const oDetailedComputerGroupsModel = new sap.ui.model.json.JSONModel();
+			let legend = {};
+			let dataLabel = {};
+			let aDetailedComputerGroups = [];
+
+			aDetailedComputerGroups = this.prepareComputerGroupsForPieChart(this.aComputerGroupsData, this.displayPercentage);
+			oDetailedComputerGroupsModel.setData(aDetailedComputerGroups);
+			this.getView().setModel(oDetailedComputerGroupsModel);
+			legend = {
+				title: {
+					visible: "true",
+					text: "Type | Clients" + (this.displayPercentage ? " | Percentage" : "")
+				}
+			};
+			dataLabel = {
+				visible: false
+			};
+			
+			this.createPieChart(oDetailedComputerGroupsModel, legend, dataLabel);
+
 		},
 		
 		/**

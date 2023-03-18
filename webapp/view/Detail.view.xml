@@ -2,6 +2,7 @@
 		xmlns:core="sap.ui.core"
 		xmlns:mvc="sap.ui.core.mvc" 
 		xmlns="sap.m"
+		xmlns:utils="sapit.controls"
 		xmlns:html="http://www.w3.org/1999/xhtml" 
 		xmlns:viz="sap.viz.ui5.controls" 
 		xmlns:l="sap.ui.layout" 
@@ -15,25 +16,19 @@
 
 	
 	<Page id="intropage" showHeader="true" enableScrolling="false" showNavButton="false">
-	<!--<Page title="Details" id="intropage" showHeader="true" enableScrolling="false" showNavButton="true" navButtonPress="onNavBack">-->
 		<customHeader>
 			<Bar>
-				<contentLeft>
-					<Button icon="sap-icon://menu2" press="onNavBack"></Button>
-				</contentLeft>
 				<contentMiddle>
 					<Title text="Details"></Title>
 				</contentMiddle>
 				<contentRight>
-					<!--<Button text="Switch to Jamf Pro data" press="onButtonPressed"></Button>-->
 					<Button icon="sap-icon://refresh" press="onRefresh"></Button>
 				</contentRight>
 			</Bar>
 		</customHeader>
 		
-		<suite:ChartContainer id="chartContainer" visible="true" title= "Active Macs: {view>/clients}"
-				showPersonalization="false" showFullScreen="true" fullScreen="true"
-					showLegend="true" autoAdjustHeight="true" showZoom="false" showLegendButton="true">
+		<suite:ChartContainer id="chartContainer" style="white-space: normal" title= "Active Macs: {view>/clients}" showFullScreen="true"
+					showLegend="true" autoAdjustHeight="true" showZoom="false" showLegendButton="true" fullScreen="true">
 					<suite:content>
 						<suite:ChartContainerContent>
 							<suite:content>
@@ -64,15 +59,17 @@
 							</suite:content>
 						</suite:ChartContainerContent>
 					</suite:content>
+					<suite:toolbar>
+					<OverflowToolbar id="appToolbar">
+						<ToolbarSpacer></ToolbarSpacer>
+						<ToggleButton id="percentageToggle" text="%" type="Transparent" tooltip="Display Percentages" press="handlePercentagesDisplay()"></ToggleButton>
+						<suite:ChartContainerToolbarPlaceholder></suite:ChartContainerToolbarPlaceholder>
+					</OverflowToolbar>
+				</suite:toolbar>
 		</suite:ChartContainer>
 		
 		<footer>
 			<OverflowToolbar></OverflowToolbar>
 		</footer>
-		
-		
-		<!--<footer>
-			<OverflowToolbar></OverflowToolbar>
-		</footer>-->
 	</Page>
 </mvc:View>
