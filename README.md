@@ -28,7 +28,7 @@ The Pie Chart Reporting Tool for Jamf Pro is a user-friendly tool for viewing re
 
 * Node.js Version 10+
 
-#### Installation
+### Installation
 
 - Install UI5 tooling globally:  
 ```console
