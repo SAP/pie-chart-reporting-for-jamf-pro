@@ -15,6 +15,7 @@ In case you are the maintainer of a new SAP open source project, these are the s
 ***
 
 <!-- # pie-chart-reporting-for-jamf-pro -->
+![PieChartReportingToolBanner](readmeMedia/images/Apple_Pie_Banner_GitHub.gif)
 # Pie Chart Reporting Tool for Jamf Pro
 
 ## About this project
