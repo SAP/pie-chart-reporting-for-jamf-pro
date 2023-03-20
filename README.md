@@ -18,6 +18,8 @@ In case you are the maintainer of a new SAP open source project, these are the s
 ![PieChartReportingToolBanner](readmeMedia/images/Apple_Pie_Banner_GitHub.gif)
 # Pie Chart Reporting Tool for Jamf Pro
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/pie-chart-reporting-for-jamf-pro)](https://api.reuse.software/info/github.com/SAP/pie-chart-reporting-for-jamf-pro)
+
 ## About this project
 
 The Pie Chart Reporting Tool for Jamf Pro is a user-friendly tool for viewing reports about internal Macs. These reports are obtained through connecting to a Jamf Pro endpoint management system and displaying specified data gathered from that system in an easy-to-understand pie chart format. The app has a main-view and detail-view architecture, where the main-view shows a selectable list of available reports, and the detail-view displays the report's data in a pie chart. The legend for the chart includes the group name, the number of clients, and the percentage of clients in that specific group.
