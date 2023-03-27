@@ -25,40 +25,15 @@ In case you are the maintainer of a new SAP open source project, these are the s
 The Pie Chart Reporting Tool for Jamf Pro is a user-friendly tool for viewing reports about internal Macs. These reports are obtained through connecting to a Jamf Pro endpoint management system and displaying specified data gathered from that system in an easy-to-understand pie chart format. The app has a main-view and detail-view architecture, where the main-view shows a selectable list of available reports, and the detail-view displays the report's data in a pie chart. The legend for the chart includes the group name, the number of clients, and the percentage of clients in that specific group.
 
 ## Demo
+See how quickly you can get a visual overview of your managed Macs'.
+
+![Demo](readmeMedia/gifs/demo.gif)
 
 ## Documentation
-* [Install Pie Chart Reporting Tool]()
-* [Using Pie Chart Reporting Tool]()
-* [Uninstall Pie Chart Reporting Tool]()
+* [Install Pie Chart Reporting Tool](https://github.com/SAP/pie-chart-reporting-for-jamf-pro/wiki/Installation)
+* [Uninstall Pie Chart Reporting Tool](https://github.com/SAP/pie-chart-reporting-for-jamf-pro/wiki/Uninstallation)
+* [Using Pie Chart Reporting Tool](https://github.com/SAP/pie-chart-reporting-for-jamf-pro/wiki/Using-Pie-Chart-Reporting-Tool)
 
-## Requirements and Setup
-
-
-```
-### Configuration
-In order for the tool to work with your Jamf instance 3 things need to be done.
-
-- Edit the `baseURL` variable in `/webapp/services/HttpService.js` to where your Jamf instance lives e.g. `http://localhost:8000`.
-- Edit the `credentials` variable in `webapp/services/AuthService.js` to your specific Jamf user's credentials.
-- In your Jamf instance, configure computer groups according to your reporting needs. The computer groups would have to be named after the following schema:\
-`REPORT|<reporting category>|<subset>`.
-(Or take the code and tweak it to your liking.)
-
-### Example:
-Let's assume you would like to visualize the distribution of installed macOS versions among your managed devices.
-- Create computer groups for all the macOS versions you would like to include in the visualization.
-- Name them according to the schema above.
-  
-Let's assume that you created following computer groups in your Jamf instance:
-  ```
-    REPORT|macOS adoption|(by version)|13
-	REPORT|macOS adoption|(by version)|12
-	REPORT|macOS adoption|(by version)|11
-  ```
-
-
-The app would create the following visalization:
-![macOSVersions](readmeMedia/images/macOSVersions.png)
 
 ## Support, Feedback, Contributing
 
