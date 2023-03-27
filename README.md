@@ -24,27 +24,16 @@ In case you are the maintainer of a new SAP open source project, these are the s
 
 The Pie Chart Reporting Tool for Jamf Pro is a user-friendly tool for viewing reports about internal Macs. These reports are obtained through connecting to a Jamf Pro endpoint management system and displaying specified data gathered from that system in an easy-to-understand pie chart format. The app has a main-view and detail-view architecture, where the main-view shows a selectable list of available reports, and the detail-view displays the report's data in a pie chart. The legend for the chart includes the group name, the number of clients, and the percentage of clients in that specific group.
 
+## Demo
+
+## Documentation
+* [Install Pie Chart Reporting Tool]()
+* [Using Pie Chart Reporting Tool]()
+* [Uninstall Pie Chart Reporting Tool]()
+
 ## Requirements and Setup
 
-### Requirements:
 
-* Node.js Version 10+
-
-### Installation
-
-- Install UI5 tooling globally:  
-```console
-user@computer:~$ npm install --global @ui5/cli
-```
-
-- Additionally install UI5 locally:  
-```console
-user@computer:~$ npm install --save-dev @ui5/cli
-```
-
-- Verify Installation:  
-```console
-user@computer:~$ ui5 versions
 ```
 ### Configuration
 In order for the tool to work with your Jamf instance 3 things need to be done.
