@@ -19,7 +19,7 @@ See how quickly you can get a visual overview of your managed Macs'.
 * [Using Pie Chart Reporting Tool](https://github.com/SAP/pie-chart-reporting-for-jamf-pro/wiki/Using-Pie-Chart-Reporting-Tool)
 
 
-## Support, Feedback, Contributing
+## Feedback and Contributing
 
 This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/SAP/pie-chart-reporting-for-jamf-pro/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](CONTRIBUTING.md).
 
