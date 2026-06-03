@@ -1,6 +1,6 @@
 <!-- # pie-chart-reporting-for-jamf-pro -->
 ![PieChartReportingToolBanner](readmeMedia/images/Apple_Pie_Banner_GitHub.gif)
-# Pie Chart Reporting Tool for Jamf Pro
+# Pie Chart Reporting Tool for Jamf Pro ** Archieved/Read Only **
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/pie-chart-reporting-for-jamf-pro)](https://api.reuse.software/info/github.com/SAP/pie-chart-reporting-for-jamf-pro)
 
