@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "pie-chart-reporting-for-jamf-pro"
+SPDX-PackageSupplier = "SAP Mac Open Source Security macatsap-opensource-security@sap.com"
+SPDX-PackageDownloadLocation = "https://github.com/SAP/pie-chart-reporting-for-jamf-pro"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 SAP SE or an SAP affiliate company and backgrounds contributors."
+SPDX-License-Identifier = "Apache-2.0"
